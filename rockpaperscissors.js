@@ -6,18 +6,18 @@ function getComputerChoice(){
 // Return rock, paper, or scissors based on the random number given.
     switch (randomNum){
         case 0:
-            return "Rock";
+            return "rock";
         case 1:
-            return "Paper";
+            return "paper";
         default:
-            return "Scissors";
+            return "scissors";
     }
 }
 // Write a function that gives the human choice of rock, paper, or scissor.
 // Give a prompt that requires the user to enter a choice and returns the user choice.
 function getHumanChoice(){
     let choice = prompt("What is your choice?");
-    return choice;
+    return choice.toLowerCase(); // Make the user choice case insensitive.
 }
 // Write variables to keep track of players' scores.
 // Create two variables: humanScore and computerScore
@@ -25,12 +25,27 @@ let humanScore = 0;
 let computerScore = 0;
 // Write function for playing the game round by round.
 function playRound(humanChoice, computerChoice){ // Define the game function with parameters for the functions
-    const humanSelection = getHumanChoice(); // Execute the previous functions inside the game function to get the choices
-    const computerSelection = getComputerChoice();
+
 
     console.log(`Human chose: ${humanSelection}`); // Print the actual choices to the console once the human choice has been received.
     console.log(`Computer chose: ${computerSelection}`);
+    // Write the if/else code for the console to print a victory or defeat message and change score
+    if (humanSelection === computerSelection){ // Tie condition
+        console.log("It's a tie");
+        
+    } // Winning conditions for the player
+    else if (
+        (humanSelection === "rock" && computerSelection === "scissors") || 
+        (humanSelection === "scissors" && computerSelection === "paper") ||
+        (humanSelection === "paper" && computerSelection === "rock")
+    ){
+            humanScore++;
+        console.log("One point awarded, you win!");
+    } else { // winning conditions for the computer
+            computerScore++;
+            console.log("Computer wins one point!");
+    }
 }
-
-
-playRound(getHumanChoice, getComputerChoice);
+    const humanSelection = getHumanChoice(); // Execute the previous functions inside the game function to get the choices
+    const computerSelection = getComputerChoice();
+playRound(humanSelection, computerSelection);
