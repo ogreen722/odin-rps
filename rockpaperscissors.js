@@ -19,5 +19,18 @@ function getHumanChoice(){
     let choice = prompt("What is your choice?");
     return choice;
 }
-console.log(getComputerChoice());
-console.log(getHumanChoice());
+// Write variables to keep track of players' scores.
+// Create two variables: humanScore and computerScore
+let humanScore = 0;
+let computerScore = 0;
+// Write function for playing the game round by round.
+function playRound(humanChoice, computerChoice){ // Define the game function with parameters for the functions
+    const humanSelection = getHumanChoice(); // Execute the previous functions inside the game function to get the choices
+    const computerSelection = getComputerChoice();
+
+    console.log(`Human chose: ${humanSelection}`); // Print the actual choices to the console once the human choice has been received.
+    console.log(`Computer chose: ${computerSelection}`);
+}
+
+
+playRound(getHumanChoice, getComputerChoice);
