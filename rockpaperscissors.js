@@ -22,19 +22,25 @@ function getHumanChoice(){
 
 // Write function for playing the game round by round (moved into playGame function ln 28)
 
-    const humanSelection = getHumanChoice(); // Execute the previous functions inside the game function to get the choices
-    const computerSelection = getComputerChoice();
+
 
  // Write a function to play the game for 5 rounds and declare a winner at the end.
     // Write variables to keep track of players' scores.
     // Create two variables: humanScore and computerScore
     // Add a variable for the current round
-function playGame(){
     let humanScore = 0;
     let computerScore = 0;
-    let currentRound =1;
+    function playGame(currentRound = 1){
+
     
-function playRound(humanChoice, computerChoice){ // Declare the playRound function with human and computer choices as parameters.
+    if (currentRound > 5){ // Set a maximum for the number of rounds and write a "game-over" message.
+    console.log("\nGame Over");
+    console.log(`Final Score -> Human: ${humanScore} | Computer: ${computerScore}`);
+    return;
+    }
+
+    const humanSelection = getHumanChoice(); // Execute the previous functions inside the game function to get the choices
+    const computerSelection = getComputerChoice();
 
     console.log(`Round ${currentRound}`); //State the current round
     console.log(`Human chose: ${humanSelection}`); // Print the actual choices to the console once the choices have been received.
@@ -58,7 +64,7 @@ function playRound(humanChoice, computerChoice){ // Declare the playRound functi
 // Print the current score tally
     console.log(`Score Tally -> Human: ${humanScore} | Computer: ${computerScore}`);
     currentRound++; // Move to the next round
+    playGame(currentRound); // Recursively pass the function to play another round
 }
-playRound(humanSelection, computerSelection); // Call the function so I can play a game to test the code
-}
+
 playGame();
