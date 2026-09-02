@@ -36,6 +36,13 @@ function getHumanChoice(){
     if (currentRound > 5){ // Set a maximum for the number of rounds and write a "game-over" message.
     console.log("\nGame Over");
     console.log(`Final Score -> Human: ${humanScore} | Computer: ${computerScore}`);
+    if (humanScore > computerScore){ // Declare the overall winner
+        console.log("Congratulations, you win!");
+    } else if (computerScore > humanScore){
+        console.log("The computer is the victor!");
+    } else {
+        console.log("It's a tie!");
+    }
     return;
     }
 
