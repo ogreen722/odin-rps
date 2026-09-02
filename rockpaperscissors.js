@@ -19,17 +19,27 @@ function getHumanChoice(){
     let choice = prompt("What is your choice?");
     return choice.toLowerCase(); // Make the user choice case insensitive.
 }
-// Write variables to keep track of players' scores.
-// Create two variables: humanScore and computerScore
-let humanScore = 0;
-let computerScore = 0;
-// Write function for playing the game round by round.
-function playRound(humanChoice, computerChoice){ // Define the game function with parameters for the functions
 
+// Write function for playing the game round by round (moved into playGame function ln 28)
 
-    console.log(`Human chose: ${humanSelection}`); // Print the actual choices to the console once the human choice has been received.
+    const humanSelection = getHumanChoice(); // Execute the previous functions inside the game function to get the choices
+    const computerSelection = getComputerChoice();
+
+ // Write a function to play the game for 5 rounds and declare a winner at the end.
+    // Write variables to keep track of players' scores.
+    // Create two variables: humanScore and computerScore
+    // Add a variable for the current round
+function playGame(){
+    let humanScore = 0;
+    let computerScore = 0;
+    let currentRound =1;
+    
+function playRound(humanChoice, computerChoice){ // Declare the playRound function with human and computer choices as parameters.
+
+    console.log(`Round ${currentRound}`); //State the current round
+    console.log(`Human chose: ${humanSelection}`); // Print the actual choices to the console once the choices have been received.
     console.log(`Computer chose: ${computerSelection}`);
-    // Write the if/else code for the console to print a victory or defeat message and change score
+    // Write conditions to determine winner
     if (humanSelection === computerSelection){ // Tie condition
         console.log("It's a tie");
         
@@ -40,12 +50,15 @@ function playRound(humanChoice, computerChoice){ // Define the game function wit
         (humanSelection === "paper" && computerSelection === "rock")
     ){
             humanScore++;
-        console.log("One point awarded, you win!");
+            console.log("One point awarded, you win!");
     } else { // winning conditions for the computer
             computerScore++;
             console.log("Computer wins one point!");
     }
+// Print the current score tally
+    console.log(`Score Tally -> Human: ${humanScore} | Computer: ${computerScore}`);
+    currentRound++; // Move to the next round
 }
-    const humanSelection = getHumanChoice(); // Execute the previous functions inside the game function to get the choices
-    const computerSelection = getComputerChoice();
-playRound(humanSelection, computerSelection);
+playRound(humanSelection, computerSelection); // Call the function so I can play a game to test the code
+}
+playGame();
