@@ -57,12 +57,16 @@ function getComputerChoice(){
             computerScore++;
             roundMessage.textContent = `Human chose ${humanChoice}, Computer chose ${computerChoice}. Computer wins one point!`;
         }
-    }
+        scoreDisplay.textContent = `Human: ${humanScore} | Computer: ${computerScore}`
 
+        if (humanScore === 5){
+            winnerMessage.textContent = "Game Over! You won the game!";
+        } else if (computerScore === 5) {
+            winnerMessage.textContent = "Game Over! Computer wins the game!";
+        }
+        }
 
-
-    
-
+        
 const choices = ["rock", "paper", "scissors"];
 
 choices.forEach((choice) => {
