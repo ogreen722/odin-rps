@@ -13,18 +13,7 @@ function getComputerChoice(){
             return "scissors";
     }
 }
-// Write a function that gives the human choice of rock, paper, or scissor.
-// Give a prompt that requires the user to enter a choice and returns the user choice.
 
-
-// Write function for playing the game round by round (moved into playGame function ln 28)
-
-
-
- // Write a function to play the game for 5 rounds and declare a winner at the end.
-    // Write variables to keep track of players' scores.
-    // Create two variables: humanScore and computerScore
-    // Add a variable for the current round
     let humanScore = 0;
     let computerScore = 0;
 
@@ -66,7 +55,7 @@ function getComputerChoice(){
         }
         }
 
-        
+
 const choices = ["rock", "paper", "scissors"];
 
 choices.forEach((choice) => {
