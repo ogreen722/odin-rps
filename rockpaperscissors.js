@@ -40,41 +40,28 @@ function getComputerChoice(){
     resultsDiv.append(roundMessage, scoreDisplay, winnerMessage);
     document.body.append(container, resultsDiv);
 
-    function playRound(humanChoice, computerChoice){ // Define the game function with parameters for the functions
-    const humanSelection = ; // Execute the previous functions inside the game function to get the choices
-    const computerSelection = getComputerChoice();
-
-    console.log(`Human chose: ${humanSelection}`); // Print the actual choices to the console once the human choice has been received.
-    console.log(`Computer chose: ${computerSelection}`);
-    }
+    function playRound(humanChoice, computerChoice){ 
     
-    function playGame(currentRound = 1){
-
+        if (humanScore >= 5 || computerScore >= 5) return;
     
-
-
-    const humanSelection = getHumanChoice(); // Execute the previous functions inside the game function to get the choices
-    const computerSelection = getComputerChoice();
-
-    console.log(`Round ${currentRound}`); //State the current round
-    console.log(`Human chose: ${humanSelection}`); // Print the actual choices to the console once the choices have been received.
-    console.log(`Computer chose: ${computerSelection}`);
-    // Write conditions to determine winner
-    if (humanSelection === computerSelection){ // Tie condition
-        console.log("It's a tie");
-        
-    } // Winning conditions for the player
-    else if (
-        (humanSelection === "rock" && computerSelection === "scissors") || 
-        (humanSelection === "scissors" && computerSelection === "paper") ||
-        (humanSelection === "paper" && computerSelection === "rock")
-    ){
+        if (humanChoice === computerChoice) {
+            roundMessage.textContent = `Human chose ${humanChoice}, Computer chose ${computerChoice}. It's a tie!`;
+        } else if (
+            (humanChoice === "rock" && computerChoice === "scissors") ||
+            (humanChoice === "scissors" && computerChoice === "paper") ||
+            (humanChoice === "paper" && computerChoice === "rock")
+        ) {
             humanScore++;
-            console.log("One point awarded, you win!");
-    } else { // winning conditions for the computer
+            roundMessage.textContent = `Human chose ${humanChoice}, Computer chose ${computerChoice}. One point awarded, you win!`;
+        } else {  // winning conditions for the computer
             computerScore++;
-            console.log("Computer wins one point!");
+            roundMessage.textContent = `Human chose ${humanChoice}, Computer chose ${computerChoice}. Computer wins one point!`;
+        }
     }
+
+
+
+    
 
 const choices = ["rock", "paper", "scissors"];
 
