@@ -1,5 +1,5 @@
 // Write a function to give a random number between 0 and 2 or 1 and 3.
-// Make the function return "rock" for 0, "paper" for 1, and "scissors" for 2.
+// Return "rock" for 0, "paper" for 1, and "scissors" for 2.
 function getComputerChoice(){
     // Generate a random integer: 0, 1, or 2
     const randomNum = Math.floor(Math.random() * 3);
@@ -15,10 +15,7 @@ function getComputerChoice(){
 }
 // Write a function that gives the human choice of rock, paper, or scissor.
 // Give a prompt that requires the user to enter a choice and returns the user choice.
-function getHumanChoice(){
-    let choice = prompt("What is your choice?");
-    return choice.toLowerCase(); // Make the user choice case insensitive.
-}
+
 
 // Write function for playing the game round by round (moved into playGame function ln 28)
 
@@ -30,21 +27,31 @@ function getHumanChoice(){
     // Add a variable for the current round
     let humanScore = 0;
     let computerScore = 0;
+
+    const container = document.createElement("div");
+    const resultsDiv = document.createElement("div");
+    const roundMessage = document.createElement("p");
+    const scoreDisplay = document.createElement("p");
+    const winnerMessage = document.createElement("h2");
+
+    roundMessage.textContent = "Click a button to start the game!";
+    scoreDisplay.textContent = `Human: ${humanScore} | Computer: ${computerScore}`;
+
+    resultsDiv.append(roundMessage, scoreDisplay, winnerMessage);
+    document.body.append(container, resultsDiv);
+
+    function playRound(humanChoice, computerChoice){ // Define the game function with parameters for the functions
+    const humanSelection = ; // Execute the previous functions inside the game function to get the choices
+    const computerSelection = getComputerChoice();
+
+    console.log(`Human chose: ${humanSelection}`); // Print the actual choices to the console once the human choice has been received.
+    console.log(`Computer chose: ${computerSelection}`);
+    }
+    
     function playGame(currentRound = 1){
 
     
-    if (currentRound > 5){ // Set a maximum for the number of rounds and write a "game-over" message.
-    console.log("\nGame Over");
-    console.log(`Final Score -> Human: ${humanScore} | Computer: ${computerScore}`);
-    if (humanScore > computerScore){ // Declare the overall winner
-        console.log("Congratulations, you win!");
-    } else if (computerScore > humanScore){
-        console.log("The computer is the victor!");
-    } else {
-        console.log("It's a tie!");
-    }
-    return;
-    }
+
 
     const humanSelection = getHumanChoice(); // Execute the previous functions inside the game function to get the choices
     const computerSelection = getComputerChoice();
@@ -68,10 +75,16 @@ function getHumanChoice(){
             computerScore++;
             console.log("Computer wins one point!");
     }
-// Print the current score tally
-    console.log(`Score Tally -> Human: ${humanScore} | Computer: ${computerScore}`);
-    currentRound++; // Move to the next round
-    playGame(currentRound); // Recursively pass the function to play another round
-}
 
-playGame();
+const choices = ["rock", "paper", "scissors"];
+
+choices.forEach((choice) => {
+    const button = document.createElement("button");
+    button.textContent = choice.toUpperCase();
+
+    button.addEventListener("click", () => {
+        const computerSelection = getComputerChoice();
+        playRound(choice, computerSelection);
+    });
+    container.appendChild(button);
+});
